@@ -284,6 +284,7 @@
 
 	  loadFromUrl: function (url, binary) {
 	    var self = this;
+	    var el = this.el;
 	    var loader = new THREE.FileLoader(this.manager);
 	    loader.crossOrigin = 'anonymous';
 	    if (binary === true) { loader.setResponseType('arraybuffer'); }
@@ -294,6 +295,7 @@
 	      } else {
 	        self.loadJSON(JSON.parse(buffer));
 	      }
+	      el.emit('model-loaded', {format: 'a-painter', model: null});
 	    });
 	  }
 
